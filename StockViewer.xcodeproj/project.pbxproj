@@ -14,6 +14,10 @@
 		FA58242F1F2883D700F22D3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA58242D1F2883D700F22D3F /* LaunchScreen.storyboard */; };
 		FA58243A1F2883D700F22D3F /* StockViewerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5824391F2883D700F22D3F /* StockViewerTests.swift */; };
 		FA5824451F2883D700F22D3F /* StockViewerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5824441F2883D700F22D3F /* StockViewerUITests.swift */; };
+		FAE5CA551F28949700EA33DC /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAE5CA511F28949700EA33DC /* Realm.framework */; };
+		FAE5CA561F28949700EA33DC /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAE5CA521F28949700EA33DC /* RealmSwift.framework */; };
+		FAE5CA571F28949700EA33DC /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAE5CA531F28949700EA33DC /* Starscream.framework */; };
+		FAE5CA581F28949700EA33DC /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAE5CA541F28949700EA33DC /* SwiftyJSON.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +51,10 @@
 		FA5824401F2883D700F22D3F /* StockViewerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StockViewerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA5824441F2883D700F22D3F /* StockViewerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockViewerUITests.swift; sourceTree = "<group>"; };
 		FA5824461F2883D700F22D3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAE5CA511F28949700EA33DC /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
+		FAE5CA521F28949700EA33DC /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		FAE5CA531F28949700EA33DC /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = Carthage/Build/iOS/Starscream.framework; sourceTree = "<group>"; };
+		FAE5CA541F28949700EA33DC /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +62,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAE5CA551F28949700EA33DC /* Realm.framework in Frameworks */,
+				FAE5CA561F28949700EA33DC /* RealmSwift.framework in Frameworks */,
+				FAE5CA571F28949700EA33DC /* Starscream.framework in Frameworks */,
+				FAE5CA581F28949700EA33DC /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +93,7 @@
 				FA5824381F2883D700F22D3F /* StockViewerTests */,
 				FA5824431F2883D700F22D3F /* StockViewerUITests */,
 				FA5824221F2883D700F22D3F /* Products */,
+				FAE5CA501F28949700EA33DC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,6 +138,17 @@
 			path = StockViewerUITests;
 			sourceTree = "<group>";
 		};
+		FAE5CA501F28949700EA33DC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FAE5CA511F28949700EA33DC /* Realm.framework */,
+				FAE5CA521F28949700EA33DC /* RealmSwift.framework */,
+				FAE5CA531F28949700EA33DC /* Starscream.framework */,
+				FAE5CA541F28949700EA33DC /* SwiftyJSON.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,6 +159,7 @@
 				FA58241D1F2883D700F22D3F /* Sources */,
 				FA58241E1F2883D700F22D3F /* Frameworks */,
 				FA58241F1F2883D700F22D3F /* Resources */,
+				FAE5CA591F28954400EA33DC /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -253,6 +278,30 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		FAE5CA591F28954400EA33DC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Starscream.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Realm.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RealmSwift.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Starscream.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FA58241D1F2883D700F22D3F /* Sources */ = {
@@ -413,6 +462,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = StockViewer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = test.StockViewer;
@@ -427,6 +480,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = StockViewer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = test.StockViewer;
@@ -509,6 +566,7 @@
 				FA58244B1F2883D700F22D3F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FA58244C1F2883D700F22D3F /* Build configuration list for PBXNativeTarget "StockViewerTests" */ = {
 			isa = XCConfigurationList;
@@ -517,6 +575,7 @@
 				FA58244E1F2883D700F22D3F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FA58244F1F2883D700F22D3F /* Build configuration list for PBXNativeTarget "StockViewerUITests" */ = {
 			isa = XCConfigurationList;
@@ -525,6 +584,7 @@
 				FA5824511F2883D700F22D3F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
