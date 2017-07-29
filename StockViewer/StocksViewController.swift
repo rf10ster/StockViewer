@@ -25,7 +25,7 @@ class StocksViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let graphVC = segue.destination as? GraphViewController, let stock = sender else {
+        guard let graphVC = segue.destination as? GraphViewController, let _ = sender else {
             return
         }
         graphVC.stock = "NA"

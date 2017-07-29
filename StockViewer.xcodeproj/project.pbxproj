@@ -14,6 +14,9 @@
 		90E8BDB51F294F47008337EF /* StocksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E8BDB41F294F47008337EF /* StocksViewModel.swift */; };
 		90E8BDBA1F295384008337EF /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E8BDB91F295384008337EF /* GraphViewController.swift */; };
 		90E8BDBC1F295460008337EF /* StocksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E8BDBB1F295460008337EF /* StocksCell.swift */; };
+		FA1429EB1F2CA9B500A4DC5A /* SubscriptionEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1429EA1F2CA9B500A4DC5A /* SubscriptionEntity.swift */; };
+		FA1429ED1F2CB23400A4DC5A /* TickEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1429EC1F2CB23400A4DC5A /* TickEntity.swift */; };
+		FA1429EF1F2CB3A300A4DC5A /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1429EE1F2CB3A300A4DC5A /* Globals.swift */; };
 		FA5824251F2883D700F22D3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5824241F2883D700F22D3F /* AppDelegate.swift */; };
 		FA5824271F2883D700F22D3F /* StocksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5824261F2883D700F22D3F /* StocksViewController.swift */; };
 		FA58242A1F2883D700F22D3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA5824281F2883D700F22D3F /* Main.storyboard */; };
@@ -21,6 +24,8 @@
 		FA58242F1F2883D700F22D3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA58242D1F2883D700F22D3F /* LaunchScreen.storyboard */; };
 		FA58243A1F2883D700F22D3F /* StockViewerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5824391F2883D700F22D3F /* StockViewerTests.swift */; };
 		FA5824451F2883D700F22D3F /* StockViewerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5824441F2883D700F22D3F /* StockViewerUITests.swift */; };
+		FAD3C3C11F2CBFDC00023692 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3C3C01F2CBFDC00023692 /* DataManager.swift */; };
+		FAD3C3C41F2CC19900023692 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3C3C31F2CC19900023692 /* NetworkService.swift */; };
 		FAE5CA551F28949700EA33DC /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAE5CA511F28949700EA33DC /* Realm.framework */; };
 		FAE5CA561F28949700EA33DC /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAE5CA521F28949700EA33DC /* RealmSwift.framework */; };
 		FAE5CA571F28949700EA33DC /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAE5CA531F28949700EA33DC /* Starscream.framework */; };
@@ -52,6 +57,10 @@
 		90E8BDB41F294F47008337EF /* StocksViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StocksViewModel.swift; sourceTree = "<group>"; };
 		90E8BDB91F295384008337EF /* GraphViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
 		90E8BDBB1F295460008337EF /* StocksCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StocksCell.swift; sourceTree = "<group>"; };
+		FA1429EA1F2CA9B500A4DC5A /* SubscriptionEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionEntity.swift; sourceTree = "<group>"; };
+		FA1429EC1F2CB23400A4DC5A /* TickEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TickEntity.swift; sourceTree = "<group>"; };
+		FA1429EE1F2CB3A300A4DC5A /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
+		FA1429F01F2CBBA400A4DC5A /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		FA5824211F2883D700F22D3F /* StockViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StockViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA5824241F2883D700F22D3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA5824261F2883D700F22D3F /* StocksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +74,8 @@
 		FA5824401F2883D700F22D3F /* StockViewerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StockViewerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA5824441F2883D700F22D3F /* StockViewerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockViewerUITests.swift; sourceTree = "<group>"; };
 		FA5824461F2883D700F22D3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAD3C3C01F2CBFDC00023692 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		FAD3C3C31F2CC19900023692 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		FAE5CA511F28949700EA33DC /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		FAE5CA521F28949700EA33DC /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		FAE5CA531F28949700EA33DC /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = Carthage/Build/iOS/Starscream.framework; sourceTree = "<group>"; };
@@ -129,6 +140,25 @@
 			name = Graph;
 			sourceTree = "<group>";
 		};
+		FA1429E81F2CA93200A4DC5A /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				FA1429E91F2CA94C00A4DC5A /* DBEntity */,
+				FAD3C3C01F2CBFDC00023692 /* DataManager.swift */,
+				FAD3C3C31F2CC19900023692 /* NetworkService.swift */,
+			);
+			name = DataManager;
+			sourceTree = "<group>";
+		};
+		FA1429E91F2CA94C00A4DC5A /* DBEntity */ = {
+			isa = PBXGroup;
+			children = (
+				FA1429EA1F2CA9B500A4DC5A /* SubscriptionEntity.swift */,
+				FA1429EC1F2CB23400A4DC5A /* TickEntity.swift */,
+			);
+			name = DBEntity;
+			sourceTree = "<group>";
+		};
 		FA5824181F2883D600F22D3F = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +183,7 @@
 		FA5824231F2883D700F22D3F /* StockViewer */ = {
 			isa = PBXGroup;
 			children = (
+				FA1429E81F2CA93200A4DC5A /* DataManager */,
 				90E8BDB81F295371008337EF /* Graph */,
 				90E8BDB31F294E87008337EF /* Stocks */,
 				90E8BDAE1F294034008337EF /* Settings */,
@@ -161,6 +192,8 @@
 				FA58242B1F2883D700F22D3F /* Assets.xcassets */,
 				FA58242D1F2883D700F22D3F /* LaunchScreen.storyboard */,
 				FA5824301F2883D700F22D3F /* Info.plist */,
+				FA1429EE1F2CB3A300A4DC5A /* Globals.swift */,
+				FA1429F01F2CBBA400A4DC5A /* MyPlayground.playground */,
 			);
 			path = StockViewer;
 			sourceTree = "<group>";
@@ -358,9 +391,14 @@
 				90E8BDB21F29411A008337EF /* SettingsItemViewModel.swift in Sources */,
 				90E8BDBC1F295460008337EF /* StocksCell.swift in Sources */,
 				FA5824251F2883D700F22D3F /* AppDelegate.swift in Sources */,
+				FA1429EB1F2CA9B500A4DC5A /* SubscriptionEntity.swift in Sources */,
+				FAD3C3C41F2CC19900023692 /* NetworkService.swift in Sources */,
+				FA1429EF1F2CB3A300A4DC5A /* Globals.swift in Sources */,
 				90E8BDAD1F2936EA008337EF /* SettingsCell.swift in Sources */,
 				90E8BDBA1F295384008337EF /* GraphViewController.swift in Sources */,
 				90E8BDB51F294F47008337EF /* StocksViewModel.swift in Sources */,
+				FA1429ED1F2CB23400A4DC5A /* TickEntity.swift in Sources */,
+				FAD3C3C11F2CBFDC00023692 /* DataManager.swift in Sources */,
 				90E8BDAB1F29343C008337EF /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
