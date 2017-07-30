@@ -7,7 +7,7 @@
 //
 
 import Foundation
-//import Starscream
+import Starscream
 
 protocol NetworkServiceObserverDelegage: NSObjectProtocol {
     func networkServiceDidReceiveData(message: String)
@@ -19,42 +19,42 @@ class NetworkService {
     static let shared = NetworkService()
     fileprivate let serviceObservers = NSHashTable<AnyObject>(options: [.weakMemory])
     
-//    fileprivate var socket: WebSocket?
+    fileprivate var socket: WebSocket?
     
     deinit {
         disconnect()
     }
     
     func connect(with symbols: [StockSymbol], completion: ((_ success: Bool)->())? ) {
-//        // if connected or connecting
-//        if let socket = self.socket {
-//            if socket.isConnected {
-//                subscribe(to: symbols)
-//                completion?(true)
-//                return
-//            }
-//            print("socket is not finished previous connection request")
-//            return
-//        }
-//        disconnect()
-//        let socket = WebSocket(url: URL(string: Constants.webSocketUrlString)!)
-//        // WebSocketDelegate socket.delegate = self
-//        socket.onConnect = { [weak self] _ in
-//            self?.subscribe(to: subscriprions)
-//        }
-//        socket.onDisconnect = { [weak self] (error: NSError?) in
-//            self?.disconnect()
-//            self?.serviceObservers.allObjects.forEach { $0.networkServiceDidDisconnect(error: error) }
-//        }
-//        socket.onText = { [weak self] (text: String) in
-//            self?.serviceObservers.allObjects.forEach { $0.networkServiceDidReceiveData(text: text) }
-//        }
-//        socket.connect()
-//        self.socket = socket
+        // if connected or connecting
+        if let socket = self.socket {
+            if socket.isConnected {
+                subscribe(to: symbols)
+                completion?(true)
+                return
+            }
+            print("socket is not finished previous connection request")
+            return
+        }
+        disconnect()
+        let socket = WebSocket(url: URL(string: Constants.webSocketUrlString)!)
+        // WebSocketDelegate socket.delegate = self
+        socket.onConnect = { [weak self] _ in
+            self?.subscribe(to: symbols)
+        }
+        socket.onDisconnect = { [weak self] (error: NSError?) in
+            self?.disconnect()
+            self?.serviceObservers.allObjects.forEach { ($0 as? NetworkServiceObserverDelegage)?.networkServiceDidDisconnect(error: error) }
+        }
+        socket.onText = { [weak self] (text: String) in
+            self?.serviceObservers.allObjects.forEach { ($0 as? NetworkServiceObserverDelegage)?.networkServiceDidReceiveData(message: text) }
+        }
+        socket.connect()
+        self.socket = socket
     }
     func disconnect() {
-//        socket?.disconnect()
-//        socket = nil
+        socket?.disconnect()
+        socket = nil
     }
     
     func addObserver(_ observer: NetworkServiceObserverDelegage) {
@@ -64,18 +64,18 @@ class NetworkService {
     }
     
     func subscribe(to symbols: [StockSymbol]) {
-//        guard let socket = self.socket, socket.isConnected, !symbols.isEmpty else {
-//            return
-//        }
-//        let subscriprionsParam = symbols.flatMap{ $0.rawValue }.reduce("", { $0 + "," + $1 })
-//        socket.write(string: "SUBSCRIBE: \(subscriprionsParam)")
+        guard let socket = self.socket, socket.isConnected, !symbols.isEmpty else {
+            return
+        }
+        let subscriprionsParam = symbols.flatMap{ $0.rawValue }.reduce("", { $0 + "," + $1 })
+        socket.write(string: "SUBSCRIBE: \(subscriprionsParam)")
     }
     
     func unsubscribe(from symbols: [StockSymbol]) {
-//        guard let socket = self.socket, socket.isConnected, !symbols.isEmpty else {
-//            return
-//        }
-//        let subscriprionsParam = symbols.flatMap{ $0.rawValue }.reduce("", { $0 + "," + $1 })
-//        socket.write(string: "UNSUBSCRIBE: \(subscriprionsParam)")
+        guard let socket = self.socket, socket.isConnected, !symbols.isEmpty else {
+            return
+        }
+        let subscriprionsParam = symbols.flatMap{ $0.rawValue }.reduce("", { $0 + "," + $1 })
+        socket.write(string: "UNSUBSCRIBE: \(subscriprionsParam)")
     }
 }
