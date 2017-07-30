@@ -10,6 +10,9 @@ import UIKit
 
 class StocksCell: UITableViewCell {
 
+    @IBOutlet weak var spread: UILabel!
+    @IBOutlet weak var bidask: UILabel!
+    @IBOutlet weak var symbol: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

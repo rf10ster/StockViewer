@@ -7,27 +7,43 @@
 //
 
 import Foundation
+import RealmSwift
 
 protocol StocksViewModelDelegate: NSObjectProtocol {
     func stocksViewModelFetchingData()
-    func stocksViewModelGotData()
+    func stocksViewModelGotData(result: ResultType)
 }
 
-class StocksViewModel {
+class StocksViewModel: NSObject {
     
-    fileprivate(set) var items: [Any]
+    fileprivate(set) var items: Results<SymbolEntity>?
     
     weak var delegate: StocksViewModelDelegate?
     
-    init() {
-        items = ["NA"]
+    fileprivate let dataManager = DataManager<SymbolEntity>()
+    
+    override init() {
+        super.init()
+        dataManager.delegate = self
     }
     
     func fetchData() {
         delegate?.stocksViewModelFetchingData()
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
-            self.delegate?.stocksViewModelGotData()
+        items = dataManager.fetchData(sortKey: "order", filterPredicate: NSPredicate(format: "isActive == true"))
+        if let items = self.items, !items.isEmpty {
+            self.delegate?.stocksViewModelGotData(result: ResultType.success)
         }
     }
     
+    func reconnect() {
+        delegate?.stocksViewModelFetchingData()
+        dataManager.startUpdates()
+    }
+    
+}
+
+extension StocksViewModel: DataManagerDelegage {
+    func dataManagerDidUpdated(result: ResultType) {
+        self.delegate?.stocksViewModelGotData(result: result)
+    }
 }

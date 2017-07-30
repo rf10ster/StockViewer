@@ -10,7 +10,7 @@ import UIKit
 
 class GraphViewController: UIViewController {
     
-    var stock: String!
+    var symbol: StockSymbol!
 
     override func viewDidLoad() {
         super.viewDidLoad()

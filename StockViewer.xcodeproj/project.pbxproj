@@ -7,14 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		90A8C5D81F2D5A1000156D74 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90A8C5D41F2D5A1000156D74 /* Realm.framework */; };
+		90A8C5D91F2D5A1000156D74 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90A8C5D51F2D5A1000156D74 /* RealmSwift.framework */; };
+		90A8C5DA1F2D5A1000156D74 /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90A8C5D61F2D5A1000156D74 /* Starscream.framework */; };
+		90A8C5DB1F2D5A1000156D74 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90A8C5D71F2D5A1000156D74 /* SwiftyJSON.framework */; };
 		90E8BDAB1F29343C008337EF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E8BDAA1F29343C008337EF /* SettingsViewController.swift */; };
 		90E8BDAD1F2936EA008337EF /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E8BDAC1F2936EA008337EF /* SettingsCell.swift */; };
 		90E8BDB01F294061008337EF /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E8BDAF1F294061008337EF /* SettingsViewModel.swift */; };
-		90E8BDB21F29411A008337EF /* SettingsItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E8BDB11F29411A008337EF /* SettingsItemViewModel.swift */; };
 		90E8BDB51F294F47008337EF /* StocksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E8BDB41F294F47008337EF /* StocksViewModel.swift */; };
 		90E8BDBA1F295384008337EF /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E8BDB91F295384008337EF /* GraphViewController.swift */; };
 		90E8BDBC1F295460008337EF /* StocksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E8BDBB1F295460008337EF /* StocksCell.swift */; };
-		FA1429EB1F2CA9B500A4DC5A /* SubscriptionEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1429EA1F2CA9B500A4DC5A /* SubscriptionEntity.swift */; };
+		FA1429EB1F2CA9B500A4DC5A /* SymbolEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1429EA1F2CA9B500A4DC5A /* SymbolEntity.swift */; };
 		FA1429ED1F2CB23400A4DC5A /* TickEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1429EC1F2CB23400A4DC5A /* TickEntity.swift */; };
 		FA1429EF1F2CB3A300A4DC5A /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1429EE1F2CB3A300A4DC5A /* Globals.swift */; };
 		FA5824251F2883D700F22D3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5824241F2883D700F22D3F /* AppDelegate.swift */; };
@@ -26,10 +29,6 @@
 		FA5824451F2883D700F22D3F /* StockViewerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5824441F2883D700F22D3F /* StockViewerUITests.swift */; };
 		FAD3C3C11F2CBFDC00023692 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3C3C01F2CBFDC00023692 /* DataManager.swift */; };
 		FAD3C3C41F2CC19900023692 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3C3C31F2CC19900023692 /* NetworkService.swift */; };
-		FAE5CA551F28949700EA33DC /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAE5CA511F28949700EA33DC /* Realm.framework */; };
-		FAE5CA561F28949700EA33DC /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAE5CA521F28949700EA33DC /* RealmSwift.framework */; };
-		FAE5CA571F28949700EA33DC /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAE5CA531F28949700EA33DC /* Starscream.framework */; };
-		FAE5CA581F28949700EA33DC /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAE5CA541F28949700EA33DC /* SwiftyJSON.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,14 +49,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		90A8C5D41F2D5A1000156D74 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
+		90A8C5D51F2D5A1000156D74 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		90A8C5D61F2D5A1000156D74 /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = Carthage/Build/iOS/Starscream.framework; sourceTree = "<group>"; };
+		90A8C5D71F2D5A1000156D74 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		90E8BDAA1F29343C008337EF /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		90E8BDAC1F2936EA008337EF /* SettingsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		90E8BDAF1F294061008337EF /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
-		90E8BDB11F29411A008337EF /* SettingsItemViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsItemViewModel.swift; sourceTree = "<group>"; };
 		90E8BDB41F294F47008337EF /* StocksViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StocksViewModel.swift; sourceTree = "<group>"; };
 		90E8BDB91F295384008337EF /* GraphViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
 		90E8BDBB1F295460008337EF /* StocksCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StocksCell.swift; sourceTree = "<group>"; };
-		FA1429EA1F2CA9B500A4DC5A /* SubscriptionEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionEntity.swift; sourceTree = "<group>"; };
+		FA1429EA1F2CA9B500A4DC5A /* SymbolEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SymbolEntity.swift; sourceTree = "<group>"; };
 		FA1429EC1F2CB23400A4DC5A /* TickEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TickEntity.swift; sourceTree = "<group>"; };
 		FA1429EE1F2CB3A300A4DC5A /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		FA1429F01F2CBBA400A4DC5A /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
@@ -76,10 +78,6 @@
 		FA5824461F2883D700F22D3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAD3C3C01F2CBFDC00023692 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		FAD3C3C31F2CC19900023692 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		FAE5CA511F28949700EA33DC /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
-		FAE5CA521F28949700EA33DC /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
-		FAE5CA531F28949700EA33DC /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = Carthage/Build/iOS/Starscream.framework; sourceTree = "<group>"; };
-		FAE5CA541F28949700EA33DC /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,10 +85,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAE5CA551F28949700EA33DC /* Realm.framework in Frameworks */,
-				FAE5CA561F28949700EA33DC /* RealmSwift.framework in Frameworks */,
-				FAE5CA571F28949700EA33DC /* Starscream.framework in Frameworks */,
-				FAE5CA581F28949700EA33DC /* SwiftyJSON.framework in Frameworks */,
+				90A8C5DB1F2D5A1000156D74 /* SwiftyJSON.framework in Frameworks */,
+				90A8C5D91F2D5A1000156D74 /* RealmSwift.framework in Frameworks */,
+				90A8C5DA1F2D5A1000156D74 /* Starscream.framework in Frameworks */,
+				90A8C5D81F2D5A1000156D74 /* Realm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,7 +115,6 @@
 				90E8BDAA1F29343C008337EF /* SettingsViewController.swift */,
 				90E8BDAC1F2936EA008337EF /* SettingsCell.swift */,
 				90E8BDAF1F294061008337EF /* SettingsViewModel.swift */,
-				90E8BDB11F29411A008337EF /* SettingsItemViewModel.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -153,7 +150,7 @@
 		FA1429E91F2CA94C00A4DC5A /* DBEntity */ = {
 			isa = PBXGroup;
 			children = (
-				FA1429EA1F2CA9B500A4DC5A /* SubscriptionEntity.swift */,
+				FA1429EA1F2CA9B500A4DC5A /* SymbolEntity.swift */,
 				FA1429EC1F2CB23400A4DC5A /* TickEntity.swift */,
 			);
 			name = DBEntity;
@@ -219,10 +216,10 @@
 		FAE5CA501F28949700EA33DC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				FAE5CA511F28949700EA33DC /* Realm.framework */,
-				FAE5CA521F28949700EA33DC /* RealmSwift.framework */,
-				FAE5CA531F28949700EA33DC /* Starscream.framework */,
-				FAE5CA541F28949700EA33DC /* SwiftyJSON.framework */,
+				90A8C5D41F2D5A1000156D74 /* Realm.framework */,
+				90A8C5D51F2D5A1000156D74 /* RealmSwift.framework */,
+				90A8C5D61F2D5A1000156D74 /* Starscream.framework */,
+				90A8C5D71F2D5A1000156D74 /* SwiftyJSON.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -388,10 +385,9 @@
 			files = (
 				90E8BDB01F294061008337EF /* SettingsViewModel.swift in Sources */,
 				FA5824271F2883D700F22D3F /* StocksViewController.swift in Sources */,
-				90E8BDB21F29411A008337EF /* SettingsItemViewModel.swift in Sources */,
 				90E8BDBC1F295460008337EF /* StocksCell.swift in Sources */,
 				FA5824251F2883D700F22D3F /* AppDelegate.swift in Sources */,
-				FA1429EB1F2CA9B500A4DC5A /* SubscriptionEntity.swift in Sources */,
+				FA1429EB1F2CA9B500A4DC5A /* SymbolEntity.swift in Sources */,
 				FAD3C3C41F2CC19900023692 /* NetworkService.swift in Sources */,
 				FA1429EF1F2CB3A300A4DC5A /* Globals.swift in Sources */,
 				90E8BDAD1F2936EA008337EF /* SettingsCell.swift in Sources */,

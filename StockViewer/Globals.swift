@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum StockSubscription: String, CustomStringConvertible {
+enum StockSymbol: String, CustomStringConvertible {
     
     case EURUSD, EURGBP, USDJPY, GBPUSD, USDCHF, USDCAD, AUDUSD, EURJPY, EURCHF
     
@@ -18,9 +18,13 @@ enum StockSubscription: String, CustomStringConvertible {
         let separatorIndex = str.index(str.startIndex, offsetBy:Int(str.characters.count/2))
         return "\(str.substring(to: separatorIndex))/\(str.substring(from: separatorIndex))"
     }
+    
+    static func all() -> [StockSymbol] {
+        return [.EURUSD, .EURGBP, .USDJPY, .GBPUSD, .USDCHF, .USDCAD, .AUDUSD, .EURJPY, .EURCHF]
+    }
 }
 
 struct Constants {
     static let webSocketUrlString = "wss://quotes.exness.com:18400"
-    static let initialSubscription: StockSubscription = .EURUSD
+    static let initialStockSymbol: StockSymbol = .EURUSD
 }

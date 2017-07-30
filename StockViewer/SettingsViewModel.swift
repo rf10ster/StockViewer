@@ -7,41 +7,52 @@
 //
 
 import Foundation
+import RealmSwift
 
 protocol SettingsViewModelDelegate: NSObjectProtocol {
     func settingsViewModelFetchingData()
-    func settingsViewModelGotData()
+    func settingsViewModelGotData(result: ResultType)
 }
 
-class SettingsViewModel {
+class SettingsViewModel: NSObject {
     
-    fileprivate(set) var items: [SettingsItemViewModel]
+    fileprivate(set) var items: Results<SymbolEntity>?
     
     weak var delegate: SettingsViewModelDelegate?
     
-    init() {
-        items = [SettingsItemViewModel(title: "EUR/USD", isChecked: true), SettingsItemViewModel(title: "USD/RUB", isChecked: false)]
+    fileprivate let dataManager = DataManager<SymbolEntity>()
+    
+    override init() {
+        super.init()
+        dataManager.delegate = self
     }
     
     func fetchData() {
         delegate?.settingsViewModelFetchingData()
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
-            self.delegate?.settingsViewModelGotData()
+        items = dataManager.fetchData(sortKey: "order", filterPredicate: nil)
+        if let items = self.items, !items.isEmpty {
+            self.delegate?.settingsViewModelGotData(result: ResultType.success)
         }
     }
     
+    func reconnect() {
+        delegate?.settingsViewModelFetchingData()
+        dataManager.startUpdates()
+    }
+    
     func toggleSelectionOfItem(at index: Int) {
-        guard (0..<items.count).contains(index) else {
+        guard let items = self.items, index > 0 && index < items.count else {
             return
         }
-        
+        let currentItem = items[index]
+        dataManager.changeActiveSubscriptions(symbol: StockSymbol(rawValue: currentItem.name)!, isActive: !currentItem.isActive)
         delegate?.settingsViewModelFetchingData()
-        
-        let item = items[index]
-        items[index] = SettingsItemViewModel(title: item.title, isChecked: !item.isChecked)
-        
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
-            self.delegate?.settingsViewModelGotData()
-        }
+    }
+    
+}
+
+extension SettingsViewModel: DataManagerDelegage {
+    func dataManagerDidUpdated(result: ResultType) {
+        self.delegate?.settingsViewModelGotData(result: result)
     }
 }
