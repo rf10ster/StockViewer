@@ -15,8 +15,9 @@ class TickEntity: Object {
     dynamic var bid: Double = 0
     dynamic var date: Date = Date()
     dynamic var symbol: SymbolEntity?
+    dynamic var pkId: String = UUID().uuidString
     
     override static func primaryKey() -> String? {
-        return "date"
+        return "pkId"
     }
 }

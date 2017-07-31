@@ -47,6 +47,7 @@ class NetworkService {
             self?.serviceObservers.allObjects.forEach { ($0 as? NetworkServiceObserverDelegage)?.networkServiceDidDisconnect(error: error) }
         }
         socket.onText = { [weak self] (text: String) in
+            print("network response: \(text)")
             self?.serviceObservers.allObjects.forEach { ($0 as? NetworkServiceObserverDelegage)?.networkServiceDidReceiveData(message: text) }
         }
         socket.connect()
@@ -67,7 +68,7 @@ class NetworkService {
         guard let socket = self.socket, socket.isConnected, !symbols.isEmpty else {
             return
         }
-        let subscriprionsParam = symbols.flatMap{ $0.rawValue }.reduce("", { $0 + "," + $1 })
+        let subscriprionsParam = symbols.flatMap{ $0.rawValue }.joined(separator: ",")
         socket.write(string: "SUBSCRIBE: \(subscriprionsParam)")
     }
     
@@ -75,7 +76,7 @@ class NetworkService {
         guard let socket = self.socket, socket.isConnected, !symbols.isEmpty else {
             return
         }
-        let subscriprionsParam = symbols.flatMap{ $0.rawValue }.reduce("", { $0 + "," + $1 })
+        let subscriprionsParam = symbols.flatMap{ $0.rawValue }.joined(separator: ",")
         socket.write(string: "UNSUBSCRIBE: \(subscriprionsParam)")
     }
 }

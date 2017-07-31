@@ -25,6 +25,6 @@ enum StockSymbol: String, CustomStringConvertible {
 }
 
 struct Constants {
-    static let webSocketUrlString = "wss://quotes.exness.com:18400"
+    static let webSocketUrlString = "wss://quotes.exness.com:18400/"
     static let initialStockSymbol: StockSymbol = .EURUSD
 }

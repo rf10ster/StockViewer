@@ -29,6 +29,7 @@ class DataManager<T: Object>: NSObject {
     
     fileprivate let networkServive = NetworkService.shared
     fileprivate var realmToken: NotificationToken? = nil
+    fileprivate let realm = try! Realm()
     
     weak var delegate: DataManagerDelegage? {
         didSet {
@@ -39,35 +40,19 @@ class DataManager<T: Object>: NSObject {
     override init() {
         super.init()
         networkServive.addObserver(self)
-        
-        // clear data when going to background - so data will be consistent
-        NotificationCenter.default.addObserver(self, selector: #selector(appMovedToBackground), name: Notification.Name.UIApplicationWillResignActive, object: nil)
-    }
-    
-    deinit {
-        stopUpdates()
-        NotificationCenter.default.removeObserver(self)
-    }
-    
-    @objc private func appMovedToBackground() {
-        print("App moved to background!")
-        do {
-            let realm = try Realm()
-            let allTicks = realm.objects(TickEntity.self)
-            try realm.write {
-                realm.delete(allTicks)
-            }
-        } catch {
-            print(error.localizedDescription)
+        realmToken = realm.addNotificationBlock { [weak self] notification, realm in
+            self?.delegate?.dataManagerDidUpdated(result: ResultType.success)
         }
     }
     
+    deinit {
+        realmToken?.stop()
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     func fetchData(sortKey: String, filterPredicate: NSPredicate?) -> Results<T> {
-        stopUpdates()
-
-        let realm = try! Realm()
         let resultEntities = realm.objects(T.self).sorted(byKeyPath: sortKey)
-        
+
         if let predicate = filterPredicate {
             return resultEntities.filter(predicate)
         } else {
@@ -75,16 +60,8 @@ class DataManager<T: Object>: NSObject {
         }
     }
     
-    private func stopUpdates() {
-        realmToken?.stop()
-    }
-    
     func startUpdates() {
-        stopUpdates()
-        let realm = try! Realm()
-        realmToken = realm.addNotificationBlock { [weak self] notification, realm in
-            self?.delegate?.dataManagerDidUpdated(result: ResultType.success)
-        }
+        
         let subscriprions = activeSubscriprions(realm: realm)
         networkServive.connect(with: subscriprions) { [weak self] (success) in
             guard success else {
@@ -92,13 +69,16 @@ class DataManager<T: Object>: NSObject {
                 self?.delegate?.dataManagerDidUpdated(result: result)
                 return
             }
+            print("connected to network service")
         }
     }
     
-    func update(entity: T) {
-        let realm = try! Realm()
+    // ugly method - it seems that as entry here should be new objects with implemented primaryKey
+    func update(entities: [T]) {
         try! realm.write {
-            realm.add(entity, update: true)
+            for entity in entities {
+                realm.add(entity, update: true)
+            }
         }
     }
     
@@ -136,12 +116,13 @@ class DataManager<T: Object>: NSObject {
 
 extension DataManager: NetworkServiceObserverDelegage {
     func networkServiceDidReceiveData(message: String) {
-        
+        var isSubscriptionResponse = false
         var jsonTicks: JSON? = nil
         if let dataFromString = message.data(using: .utf8, allowLossyConversion: false) {
             let json = JSON(data: dataFromString)
             
             if json["subscribed_list"]["ticks"].exists() {
+                isSubscriptionResponse = true
                 jsonTicks = json["subscribed_list"]["ticks"]
             }else if json["ticks"].exists() {
                 jsonTicks = json["ticks"]
@@ -151,21 +132,37 @@ extension DataManager: NetworkServiceObserverDelegage {
             delegate?.dataManagerDidUpdated(result: ResultType.failure(error: StockViewerError.jsonError))
             return
         }
-        let realm = try! Realm()
-        var entities = [TickEntity]()
-        for tickJson in ticks {
-            let entity = TickEntity()
-            //{"ticks":[{"s":"EURGBP","b":"0.79573","bf":0,"a":"0.79587","af":1,"spr":"1.4"}]}
-            entity.symbol = realm.object(ofType: SymbolEntity.self, forPrimaryKey: tickJson["s"].stringValue)
-            entity.spread = tickJson["spr"].doubleValue
-            entity.ask = tickJson["a"].doubleValue
-            entity.bid = tickJson["b"].doubleValue
-            entity.date = Date()
-            entities.append(entity)
-        }
         
         try! realm.write {
-            realm.add(entities)
+            if isSubscriptionResponse {
+                // switch off all current symbols - they will be maden as active by response
+                for symbol in realm.objects(SymbolEntity.self) {
+                    if symbol.isActive {
+                        symbol.isActive = false
+                    }
+                }
+            }
+            
+            for tickJson in ticks {
+                let symbol = realm.object(ofType: SymbolEntity.self, forPrimaryKey: tickJson["s"].stringValue)
+                if isSubscriptionResponse {
+                    symbol?.isActive = true
+                }
+                let entity = TickEntity()
+                //{"ticks":[{"s":"EURGBP","b":"0.79573","bf":0,"a":"0.79587","af":1,"spr":"1.4"}]}
+                entity.symbol = symbol
+                entity.spread = tickJson["spr"].doubleValue
+                entity.ask = tickJson["a"].doubleValue
+                entity.bid = tickJson["b"].doubleValue
+                entity.date = Date()
+                
+                // denormalization
+                symbol?.lastAsk = entity.ask
+                symbol?.lastBid = entity.bid
+                symbol?.lastSpread = entity.spread
+                
+                realm.add(entity)
+            }
         }
         
 

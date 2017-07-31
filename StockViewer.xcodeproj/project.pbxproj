@@ -11,6 +11,8 @@
 		90A8C5D91F2D5A1000156D74 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90A8C5D51F2D5A1000156D74 /* RealmSwift.framework */; };
 		90A8C5DA1F2D5A1000156D74 /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90A8C5D61F2D5A1000156D74 /* Starscream.framework */; };
 		90A8C5DB1F2D5A1000156D74 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90A8C5D71F2D5A1000156D74 /* SwiftyJSON.framework */; };
+		90AD416B1F2E8A6F0051E399 /* GraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AD416A1F2E8A6F0051E399 /* GraphViewModel.swift */; };
+		90AD416D1F2E936C0051E399 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90AD416C1F2E936C0051E399 /* Charts.framework */; };
 		90E8BDAB1F29343C008337EF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E8BDAA1F29343C008337EF /* SettingsViewController.swift */; };
 		90E8BDAD1F2936EA008337EF /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E8BDAC1F2936EA008337EF /* SettingsCell.swift */; };
 		90E8BDB01F294061008337EF /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E8BDAF1F294061008337EF /* SettingsViewModel.swift */; };
@@ -53,6 +55,8 @@
 		90A8C5D51F2D5A1000156D74 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		90A8C5D61F2D5A1000156D74 /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = Carthage/Build/iOS/Starscream.framework; sourceTree = "<group>"; };
 		90A8C5D71F2D5A1000156D74 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		90AD416A1F2E8A6F0051E399 /* GraphViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphViewModel.swift; sourceTree = "<group>"; };
+		90AD416C1F2E936C0051E399 /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = Carthage/Build/iOS/Charts.framework; sourceTree = "<group>"; };
 		90E8BDAA1F29343C008337EF /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		90E8BDAC1F2936EA008337EF /* SettingsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		90E8BDAF1F294061008337EF /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
@@ -87,6 +91,7 @@
 			files = (
 				90A8C5DB1F2D5A1000156D74 /* SwiftyJSON.framework in Frameworks */,
 				90A8C5D91F2D5A1000156D74 /* RealmSwift.framework in Frameworks */,
+				90AD416D1F2E936C0051E399 /* Charts.framework in Frameworks */,
 				90A8C5DA1F2D5A1000156D74 /* Starscream.framework in Frameworks */,
 				90A8C5D81F2D5A1000156D74 /* Realm.framework in Frameworks */,
 			);
@@ -133,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				90E8BDB91F295384008337EF /* GraphViewController.swift */,
+				90AD416A1F2E8A6F0051E399 /* GraphViewModel.swift */,
 			);
 			name = Graph;
 			sourceTree = "<group>";
@@ -216,6 +222,7 @@
 		FAE5CA501F28949700EA33DC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				90AD416C1F2E936C0051E399 /* Charts.framework */,
 				90A8C5D41F2D5A1000156D74 /* Realm.framework */,
 				90A8C5D51F2D5A1000156D74 /* RealmSwift.framework */,
 				90A8C5D61F2D5A1000156D74 /* Starscream.framework */,
@@ -365,12 +372,14 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Starscream.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Charts.framework",
 			);
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Realm.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RealmSwift.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Starscream.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftyJSON.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Charts.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -392,6 +401,7 @@
 				FA1429EF1F2CB3A300A4DC5A /* Globals.swift in Sources */,
 				90E8BDAD1F2936EA008337EF /* SettingsCell.swift in Sources */,
 				90E8BDBA1F295384008337EF /* GraphViewController.swift in Sources */,
+				90AD416B1F2E8A6F0051E399 /* GraphViewModel.swift in Sources */,
 				90E8BDB51F294F47008337EF /* StocksViewModel.swift in Sources */,
 				FA1429ED1F2CB23400A4DC5A /* TickEntity.swift in Sources */,
 				FAD3C3C11F2CBFDC00023692 /* DataManager.swift in Sources */,

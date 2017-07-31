@@ -1,3 +1,4 @@
 github "SwiftyJSON/SwiftyJSON" "3.1.4"
 github "daltoniam/Starscream" "2.1.0"
-github "realm/realm-cocoa" "v2.8.3"
+github "danielgindi/Charts" "v3.0.2"
+github "realm/realm-cocoa" "v2.9.0"

@@ -69,7 +69,7 @@ extension SettingsViewController: SettingsViewModelDelegate {
 }
 
 extension SettingsViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         viewModel.toggleSelectionOfItem(at: indexPath.row)
     }

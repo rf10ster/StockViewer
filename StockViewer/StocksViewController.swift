@@ -32,6 +32,9 @@ class StocksViewController: UIViewController {
         graphVC.title = symbol.description
     }
 
+    @IBAction func editButtonClicked(_ sender: UIBarButtonItem) {
+        self.tableView.setEditing(!self.tableView.isEditing, animated: true)
+    }
 }
 
 extension StocksViewController: StocksViewModelDelegate {
@@ -46,7 +49,9 @@ extension StocksViewController: StocksViewModelDelegate {
         activityView.stopAnimating()
         switch result {
         case .success:
-            tableView.reloadData()
+            if !tableView.isEditing {
+                tableView.reloadData()
+            }
         case let .failure(error: error):
             var alerttitle: String? = nil
             var alertmessage: String? = nil
@@ -78,13 +83,16 @@ extension StocksViewController: StocksViewModelDelegate {
 }
 
 extension StocksViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
         guard let items = viewModel.items else {
             return
         }
         let item = items[indexPath.row]
         performSegue(withIdentifier: "GraphSegue", sender: StockSymbol(rawValue: item.name))
+    }
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return .delete
     }
 }
 
@@ -95,16 +103,40 @@ extension StocksViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         let item = items[indexPath.row]
-        let lastTick = item.ticks.sorted(byKeyPath: "date").last ?? TickEntity()
+        
+        // use denormalization instead of last tick
+        //let lastTick = item.ticks.sorted(byKeyPath: "date").last ?? TickEntity()
+        let lastSpread = item.lastSpread //lastTick.spread
+        let lastBid = item.lastBid //lastTick.bid
+        let lastAsk = item.lastAsk //lastTick.ask
+        
         //| EUR/USD | 1.12812 / 1.12820 | 0.8 |
         cell.symbol.text = StockSymbol(rawValue: item.name)?.description
-        cell.spread.text = "\(lastTick.spread)"
-        cell.bidask.text = "\(lastTick.bid) / \(lastTick.ask)"
+        cell.spread.text = "\(lastSpread)"
+        cell.bidask.text = "\(lastBid) / \(lastAsk)"
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.items?.count ?? 0
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            viewModel.toggleIsActiveOfItem(at: indexPath.row)
+            self.tableView.setEditing(false, animated: true)
+        }
+    }
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        viewModel.changePositions(src:sourceIndexPath.row, dest:destinationIndexPath.row)
+        self.tableView.setEditing(false, animated: true)
+    }
+
 }
 
