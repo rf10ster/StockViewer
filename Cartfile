@@ -1,4 +1,4 @@
-github "realm/realm-cocoa"
-github "daltoniam/Starscream" >= 2.0.3
-github "SwiftyJSON/SwiftyJSON"
-github "danielgindi/Charts" ~> 3.0.2
+github "realm/realm-cocoa" == 3.3.0
+github "daltoniam/Starscream" == 3.0.4
+github "SwiftyJSON/SwiftyJSON" == 4.0.0
+github "danielgindi/Charts" == 3.1.0
