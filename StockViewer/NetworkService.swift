@@ -42,7 +42,7 @@ class NetworkService {
         socket.onConnect = { [weak self] _ in
             self?.subscribe(to: symbols)
         }
-        socket.onDisconnect = { [weak self] (error: NSError?) in
+        socket.onDisconnect = { [weak self] (error: Error?) in
             self?.disconnect()
             self?.serviceObservers.allObjects.forEach { ($0 as? NetworkServiceObserverDelegage)?.networkServiceDidDisconnect(error: error) }
         }

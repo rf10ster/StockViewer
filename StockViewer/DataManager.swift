@@ -40,13 +40,13 @@ class DataManager<T: Object>: NSObject {
     override init() {
         super.init()
         networkServive.addObserver(self)
-        realmToken = realm.addNotificationBlock { [weak self] notification, realm in
+        realmToken = realm.observe { [weak self] notification, realm in
             self?.delegate?.dataManagerDidUpdated(result: ResultType.success)
         }
     }
     
     deinit {
-        realmToken?.stop()
+        realmToken?.invalidate()
         NotificationCenter.default.removeObserver(self)
     }
     
@@ -119,7 +119,9 @@ extension DataManager: NetworkServiceObserverDelegage {
         var isSubscriptionResponse = false
         var jsonTicks: JSON? = nil
         if let dataFromString = message.data(using: .utf8, allowLossyConversion: false) {
-            let json = JSON(data: dataFromString)
+            guard let json = try? JSON(data: dataFromString) else {
+                return
+            }
             
             if json["subscribed_list"]["ticks"].exists() {
                 isSubscriptionResponse = true
